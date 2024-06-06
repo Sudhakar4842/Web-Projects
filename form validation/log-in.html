@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                     <title>login</title>
+    <style>
+        fieldset{
+            height: auto;
+            width: 300px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+   <h1>log-in form</h1>
+            
+            <br>
+        <form action="index3.html" onsubmit="return vali()">
+           
+        <fieldset>
+            <legend>fill the form</legend>
+            <p>Username<input type="text" ></p>
+            <h2 id="username"></h2>
+
+            <p>Email <input type="mail" ></p>   
+            <h3 id="email"></h3>
+
+            <p>password<input type="password" ></p>
+            <h3 id="password"></h3>
+            
+            <p>confirm password<input type="password" ></p>
+            <h3 id="confirmpassword"></h3>
+
+           <p>
+            <input type="checkbox" id="agree">
+            <label for="agree"   >i agree terms and condition</label>
+           </p>
+
+           <input type="submit" value="Register" id="register" disabled>
+
+
+        </fieldset>
+        </form>
+      
+    
+
+    <script>
+            
+             input= document.getElementsByTagName("input");       
+             function vali()
+             {
+                if(input[0].value!="smart")
+                {
+                   let x=document.getElementById("username")
+                   x.innerHTML="username is invalid"
+                   x.style.color="red"
+                   return false;
+                   
+                }
+                else if(input[1].value!="sudhakarmuni143@gmail.com")
+                {
+                   let y=document.getElementById("email")
+                   y.innerHTML="invalid email   "
+                   y.style.color="red"
+                   return false;
+                }
+                
+                else if(input[2].value!="12345678")
+                {
+                   let y=document.getElementById("password")
+                   y.innerHTML="invalid password"
+                   y.style.color="red"
+                   return false;
+                }
+                
+                else if(input[3].value!="12345678")
+                {
+                   let y=document.getElementById("confirmpassword")
+                   y.innerHTML="invalid confirmpassword"
+                   y.style.color="red"
+                   return false;
+                }
+             }
+           
+          var agree =document.getElementById("agree")
+          agree.addEventListener("change",function()
+          {
+            let register=document.getElementById("register");
+            if(agree.checked)
+            {
+               register.removeAttribute("disabled") 
+            }
+            else{
+               register.setAttribute("disabled","disabled")
+            }
+          })
+
+    </script>
+</body>
+</html>
