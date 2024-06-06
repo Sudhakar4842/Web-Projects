@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN_IN</title>
+    <style>
+        div{
+            height: auto;
+            width: 300px;
+            border: 2px solid black;
+            padding: 20px;
+            margin: auto;
+        }
+        .ERROR{
+            margin-left: 42%;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="success sign-in" onsubmit=" return   vali()">
+        <div> username : <input type="text"></div>
+        <p class="ERROR"></p>
+
+        <div> password : <input type="password"></div>
+        <p class="ERROR"></p>
+
+        <div> email : <input type="email"></div>
+        <p class="ERROR"></p>
+
+        <div> phone : <input type="number"></div>
+        <p class="ERROR"></p>
+
+        <div>  <input type="submit" value="SUBMIT"></div>
+        <p class="ERROR"></p>
+
+    </form>
+
+    <script>
+        function vali()
+        {
+            var username=/^[A-Za-z]{3,}$/
+
+            var input=document.getElementsByTagName("input")
+            var error=document.getElementsByClassName("ERROR")
+            
+
+            if(username.test(input[0].value))
+            {
+               error[0].innerHTML=""
+            }
+            else{
+                error[0].innerHTML="user must have a 3 charector"
+                error[0].style.color="red"
+                return false; 
+            }
+
+            // var password=/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*])[a-zA-z0-9!@#$%^&*]{8}$/
+          var password = /^[0-9]{8}$/
+
+            if(password.test(input[1].value))
+            {
+                error[1].innerHTML=""
+            }
+            else{
+                error[1].innerHTML="password must be 8 charaector"
+                error[1].style.color="red"
+                return false;
+            }
+
+            var email=/^[a-z0-9]{3,}@[a-z]{3,}.[a-z]{2,}$/
+
+            if(email.test(input[2].value))
+            {
+                error[2].innerHTML=""
+            }
+            else{
+                error[2].innerHTML="email should contain @ .com "
+                error[2].style.color="red"
+                return false;
+            }
+
+            var phone=/^[6789][0-9]{9}$/
+
+            if(phone.test(input[3].value))
+            {
+                error[3].innerHTML=""
+            }
+            else{
+                error[3].innerHTML="phone num must have 10digit"
+                error[3].style.color="red"
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
