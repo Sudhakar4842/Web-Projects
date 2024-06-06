@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vehicle parking</title>
+</head>
+<body>
+    
+    <!-- <button onclick="v1.displayvehicle()">display</button> -->
+    
+
+    <script>
+        class vehicleparking
+        {
+         constructor()
+         {
+     this.vehicle=[]
+         }
+         vehicledetails(VNO,VMODEL,PHONE,CNAME,CHECK_IN,CHECK_OUT)
+         {
+           var x={
+            VNO,         
+            VMODEL,
+            PHONE,
+            CNAME,
+            CHECK_IN,
+            CHECK_OUT:null
+                   }
+                   this.vehicle.push(x)
+                   
+         }
+         displayvehicle()
+         {
+             console.table(this.vehicle)
+ 
+         }
+         searchvechicle(vno)
+     {
+               let data=this.vehicle.find(n=>n.VNO===vno)
+              if(data==undefined)
+           {
+               console.log("vehicle not found")
+               return  //program termination
+           }      
+                console.table(data)
+      }
+ 
+         checkout(vno,checkouttime)
+         {
+                let data=this.vehicle.find(n=>n.VNO===vno)
+                if(data==undefined)
+            {
+               console.log("vehicle not found")
+               return  //program termination             
+            }
+               let duration=(new Date(checkouttime)-new Date(data.CHECK_IN))/(1000*60)
+               let amount=0;
+          if(duration<=30)
+              {  
+              amount=30
+              }         
+          else{
+                 let extratime=duration-30
+                 amount=30+Math.ceil(extratime/30)*10    
+              }
+              console.log("vehicledetails")
+              data.CHECK_OUT=checkouttime
+              console.table(data)
+              console.log("duration====>"+duration)
+              console.log("amount to pay "+amount)
+         }
+        }
+        const v1=new vehicleparking();
+ 
+       v1.vehicledetails("KA-01-HH-3639","bike",6385444842,"sudhakar",new Date("02 23 2023 10:00:00 "))
+       v1.vehicledetails("KA-01-HH-3634","car",6385444845,"smart",new Date("02 23 2023 10:00:00 "))
+       v1.vehicledetails("KA-01-HH-3635","bus",6385444848,"joseph",new Date("03 24 2024 10:00:00 AM"))
+      
+     v1.displayvehicle()
+ 
+       v1.searchvechicle("KA-01-HH-3635")
+     v1.checkout("KA-01-HH-3635",new Date("03 24 2024 11:31:00 "))
+ 
+ 
+     // see the output in console window
+ 
+ 
+     </script>
+</body>
+</html>
